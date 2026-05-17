@@ -34,13 +34,14 @@ export function createGallery(images, isNewSearch = true) {
     galleryContainer.insertAdjacentHTML('beforeend', markup);
   }
 
-if (!lightbox) {
+  if (lightbox) {
+    lightbox.destroy();
+  }
+
   lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
   });
-} else {
-  lightbox.refresh();
 }
 
 export function clearGallery() {
