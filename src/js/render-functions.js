@@ -1,4 +1,4 @@
-import SimpleLightbox from 'simplelightbox/dist/simple-lightbox.esm';
+import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 let lightbox = null;
@@ -34,14 +34,14 @@ export function createGallery(images, isNewSearch = true) {
     galleryContainer.insertAdjacentHTML('beforeend', markup);
   }
 
-  if (lightbox) {
-    lightbox.destroy();
+  if (!lightbox) {
+    lightbox = new SimpleLightbox('.gallery a', {
+      captionsData: 'alt',
+      captionDelay: 250,
+    });
+  } else {
+    lightbox.refresh();
   }
-
-  lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
 }
 
 export function clearGallery() {
