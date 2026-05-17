@@ -35,7 +35,7 @@ export function createGallery(images, isNewSearch = true) {
   }
 
   if (lightbox) {
-    lightbox.destroy();
+    lightbox.refresh();
   }
 
   lightbox = new SimpleLightbox('.gallery a', {
